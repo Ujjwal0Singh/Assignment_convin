@@ -1,0 +1,102 @@
+# Create a new user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Akash Singh",
+  "email": "Akash.doe@example.com",
+  "mobile": "9876456960"
+}
+
+### Get user details by ID
+GET http://localhost:3000/users/1
+
+### Add a new expense with equal split
+POST http://localhost:3000/expenses
+Content-Type: application/json
+
+{
+  "user_id": 1,
+  "description": "Dinner with friends",
+  "amount": 3000,
+  "split_method": "equal",
+  "splits": [
+    {
+      "name": "John Doe",
+      "email": "john.doe@example.com"
+    },
+    {
+      "name": "Jane Doe",
+      "email": "jane.doe@example.com"
+    },
+    {
+      "name": "Mark Smith",
+      "email": "mark.smith@example.com"
+    }
+  ]
+}
+
+### Add a new expense with exact split
+POST http://localhost:3000/expenses
+Content-Type: application/json
+
+{
+  "user_id": 1,
+  "description": "Shopping",
+  "amount": 4299,
+  "split_method": "exact",
+  "splits": [
+    {
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "amount": 799
+    },
+    {
+      "name": "Jane Doe",
+      "email": "jane.doe@example.com",
+      "amount": 2000
+    },
+    {
+      "name": "Mark Smith",
+      "email": "mark.smith@example.com",
+      "amount": 1500
+    }
+  ]
+}
+
+### Add a new expense with percentage split
+POST http://localhost:3000/expenses
+Content-Type: application/json
+
+{
+  "user_id": 1,
+  "description": "Party with friends",
+  "amount": 2000,
+  "split_method": "percentage",
+  "splits": [
+    {
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "percentage": 50
+    },
+    {
+      "name": "Jane Doe",
+      "email": "jane.doe@example.com",
+      "percentage": 25
+    },
+    {
+      "name": "Mark Smith",
+      "email": "mark.smith@example.com",
+      "percentage": 25
+    }
+  ]
+}
+
+### Get all expenses for a specific user
+GET http://localhost:3000/expenses/1
+
+### Get all expenses
+GET http://localhost:3000/expenses
+
+### Download the balance sheet as a CSV file
+GET http://localhost:3000/balance-sheet/download
